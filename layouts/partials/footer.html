@@ -1,0 +1,92 @@
+{{ if or (eq .Section "news") (eq .Section "dashboards") (eq .Section "events") }}
+{{ if not (or .IsHome .IsSection) }}
+<div class="container content mt-5">
+<div class="row">
+  {{ if and .GitInfo .Site.Params.repository }}
+  <div class="col text-start">
+    {{- $date := partial "date" (dict "Date" .GitInfo.AuthorDate.Local "Format" "January 2, 2006") -}}
+    {{- $commitPath := default "commit" .Site.Params.BookCommitPath -}}
+    <a class="text-muted text-decoration-none fs-6" href="{{ .Site.Params.repository }}/{{ $commitPath }}/{{ .GitInfo.Hash }}" title='{{ i18n "lastModifiedBy" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
+      <small>{{ i18n "lastModifiedBy" }}: {{ $date }}</small>
+    </a>
+  </div>
+  {{ end }}
+
+  {{ if and .File .Site.Params.repository .Site.Params.editPath }}
+  <div class="col text-end">
+    <a class="text-muted text-decoration-none fs-6" href="{{ .Site.Params.repository }}/{{ .Site.Params.editPath }}/{{ .Site.Params.contentDir | default "content" }}/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener">
+        <small>{{ i18n "editThisPage" }}</small>
+    </a>
+  </div>
+  {{ end }}
+
+</div>
+</div>
+{{ end }}
+{{ end }}
+<footer class="container border-top mt-5 mb-2">
+  <div class="row border-bottom">
+
+    <!-- About section -->
+    <div class="col-md px-5 px-md-2">
+      <h2 class="small text-uppercase text-black-50">{{ i18n "about" }}</h2>
+      <ul class="list-unstyled mb-1">
+        {{ range .Site.Menus.footer_about }}
+        <li><a href="{{ .Page.RelPermalink }}" class="small">
+          {{ .Name }}
+        </a></li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <!-- Data and follow section -->
+    <div class="col-md px-5 px-md-2">
+      <h2 class="small text-uppercase text-black-50">{{ i18n "data" }}</h2>
+      <ul class="list-unstyled mb-0">
+        {{ range .Site.Menus.footer_data }}
+        <li><a href="{{ .Page.RelPermalink }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+      <h2 class="small text-uppercase text-black-50">{{ i18n "connect" }}</h2>
+      <div>
+        {{ with .Site.Params.linkedin }}
+        <a style="font-size:1.75em;" target="_blank" aria-label="LinkedIn"
+          href="https://www.linkedin.com/{{ . }}"><i class="bi bi-linkedin"></i></a>
+        {{ end }}
+
+        {{ with .Site.Params.twitter }}
+        <a class="ps-2" style="font-size:1.75em;" target="_blank" aria-label="X"
+           href="https://twitter.com/{{ . }}"><i class="bi bi-twitter-x"></i></a>
+        {{ end }}
+
+        {{ with .Site.Params.mail }}
+        <a class="ps-2" style="font-size:1.90em;" target="_blank" aria-label="Email"
+          href="mailto:{{ . }}"><i class="bi bi-envelope-fill"></i></a>
+        {{ end }}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-center small mt-2">
+    <small>This website was built using the <a href="https://gohugo.io" target="_blank">Hugo</a> static site generator and the <a href="https://github.com/sib-swiss/hugo-pathogens-portal" target="_blank">Pathogens Portal theme</a> developed by the <a href="https://www.sib.swiss" target="_blank">Swiss Institute of Bioinformatics</a>.</small>
+  </div>
+</footer>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+<!-- Data tables CSS -->
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js" integrity="sha384-bhTEuCvZn/7LkLAhDKIriigeZtnWpmv3f43HorHIijvhb76eN7sQBRC4PkIhe23S" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.bootstrap5.js" integrity="sha384-ytWx70TEZNWKvhA4mV4nQPHLRzPJeBf42voNnsXOSCv7ZxlBWQIceO1G8bJirjxl" crossorigin="anonymous"></script>
+
+<!-- Data tables JS -->
+<script lang="js">
+  document.addEventListener("DOMContentLoaded", function() {
+    new DataTable('table')
+  })
+</script>

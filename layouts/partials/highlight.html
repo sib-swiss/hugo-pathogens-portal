@@ -1,0 +1,20 @@
+<div class="col data-highlight">
+    <div class="bg-highlight">
+        <div aria-hidden="true">
+            <a href="{{ .Page.RelPermalink }}">
+                <img class="img-fluid" src="{{ relLangURL .Page.Params.image }}" alt="{{ .Page.Title }}">
+            </a>
+        </div>
+        <div class="mt-2">
+            <small>{{ .Page.Date.Format "Jan 02, 2006" }}</small>
+        </div>
+        <div>
+            <h6 class="my-1"><a class="dark-blue" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></h6>
+        </div>
+        <div class="px-2">
+            {{ range .Page.Params.tags }}
+            <span class="topic_badge_small"><a href="/tags/{{ urlize . }}">{{ . }}</a></span>
+            {{ end }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{{ $events := .Site.GetPage "section" "news" }}
+{{ if $events }}
+{{ if not .IsHome }}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range $events.RegularPages }}
+          {{ partial "highlight.html" . }}
+      {{ end }}
+    </div>
+{{ else }}
+    {{ if .Site.Menus.highlights }}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range .Site.Menus.highlights }}
+            {{ partial "highlight.html" . }}
+        {{ end }}
+    </div>
+    {{ else }}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range first 3 $events.RegularPages }}
+            {{ partial "highlight.html" . }}
+        {{ end }}
+    </div>
+    {{ end }}
+{{ end }}
+{{ end }}

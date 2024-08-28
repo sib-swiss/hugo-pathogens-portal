@@ -1,0 +1,104 @@
+[404]
+other = "Tyvärr, sidan kan inte hittas."
+
+[goHome]
+other = "Gå tillbaka till startsidan"
+
+[Dashboards]
+other = "Instrumentpaneler"
+
+[seeDashboards]
+other = "Visa alla instrumentpaneler"
+
+[toc]
+other = "Innehållsförteckning"
+
+[skipToContent]
+other = "Hoppa till huvudinnehållet"
+
+[about]
+other = "Om"
+
+[data]
+other = "Data"
+
+[connect]
+other = "Anslut"
+
+[topics]
+other = "Ämnen"
+
+[topicsList]
+other = "Klicka på ett av ämnena nedan för att endast se innehåll som är relaterat till det ämnet."
+
+[allDashboards]
+other = "Alla instrumentpaneler"
+
+[dataDashboards]
+other = "Datainstrumentpaneler"
+
+[eventsAndTrainings]
+other = "Evenemang & Utbildningar"
+
+[eventsAndTrainingsList]
+other = "Titlar och startdatum för kommande evenemang."
+
+[upcomingEvents]
+other = "Kommande Evenemang"
+
+[pastEvents]
+other = "Tidigare Evenemang"
+
+[startDate]
+other = "Startdatum"
+
+[endDate]
+other = "Slutdatum"
+
+[location]
+other = "Plats"
+
+[organiser]
+other = "Arrangör(er)"
+
+[categories]
+other = "Kategorier"
+
+[description]
+other = "Beskrivning"
+
+[eventWebpage]
+other = "Evenemangets webbplats"
+
+[dateAndTime]
+other = "Datum & Tid"
+
+[noUpcomingEvents]
+other = "Det finns inga kommande evenemang."
+
+[findSamplesOnNationalBiobanks]
+other = "Hitta prover i nationella biobanker"
+
+[searchDatabase]
+other = "Sök i databasen"
+
+[newsAndHighlights]
+other = "Nyheter & Höjdpunkter"
+
+[seeNewsAndHighlights]
+other = "Visa alla nyheter & höjdpunkter"
+
+[author]
+other = "Författare"
+
+[publishedDate]
+other = "Publiceringsdatum"
+
+[tags]
+other = "Taggar"
+
+[lastModifiedBy]
+other = "Senast ändrad av"
+
+[editThisPage]
+other = "Redigera denna sida"

@@ -1,0 +1,120 @@
+{{ define "main" }}
+
+<!-- Main content -->
+<div class="row">
+    <div class="col-md-8 vert-line-right mt-3">
+
+        <!-- Dashboards -->
+        <div class="row">
+            <div class="col-8">
+                <h3 class="mt-0">{{ i18n "dashboards" }}</h3>
+            </div>
+            <div class="col-4 mt-2 pt-1 text-end see-all-link-text">
+                <a href="/dashboards">
+                    {{ i18n "seeDashboards" }}
+                    <i class="bi bi-arrow-right-square-fill"></i>
+                </a>
+            </div>
+        </div>
+        {{ partial "dashboards.html" . }}
+
+        <!-- News -->
+        <div class="row mt-5">
+            <div class="col-8">
+                <h3 class="mt-0">{{ i18n "newsAndHighlights" }}</h3>
+            </div>
+            <div class="col-4 mt-2 pt-1 text-end see-all-link-text">
+                <a href="/news">
+                    {{ i18n "seeNewsAndHighlights" }}
+                    <i class="bi bi-arrow-right-square-fill"></i>
+                </a>
+            </div>
+        </div>
+        {{ partial "highlights.html" . }}
+
+        <!-- Biobanks -->
+        {{ with .Site.Params.biobank_url }}
+        <div class="row mt-5">
+            <div class="col-8">
+                <h3 class="mt-0">{{ i18n "findSamplesOnNationalBiobanks" }}</h3>
+            </div>
+            <div class="col-4 mt-2 pt-1 text-end see-all-link-text">
+                <a href="/dashboards">
+                    {{ i18n "searchDatabase" }}
+                    <i class="bi bi-arrow-right-square-fill"></i>
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+
+    <!-- Right sidebar -->
+    <div class="col-md-4 ms-auto p-3">
+        <hr class="d-lg-none">
+
+        <!-- Topics box -->
+        <div class="bg-home-topics mb-4">
+            <h4 class="mt-0 mb-1">{{ i18n "topics" }}</h4>
+            <p class="mb-2 small">{{ i18n "topicsList" }}</p>
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                <a href="/tags/{{ urlize $name }}"><span class="bg-home-topics-btn">{{ $name }}</span></a>
+            {{ end }}
+        </div>
+
+        <!-- Events -->
+        {{ $events := .Site.GetPage "section" "events" }}
+
+        {{ if $events }}
+        <section id="events-section">
+            <div class="row mt-4">
+                <h4 class="mb-1">{{ i18n "eventsAndTrainings" }}</h4>
+                <p class="mb-2 small">{{ i18n "eventsAndTrainingsList" }}</p>
+            </div>
+            <div class="row px-2">
+                <div class="border p-3">
+
+
+                    {{ $upcomingEvents := where (sort $events.RegularPages ".Params.start_date" "asc") ".Params.start_date" "ge" (now.Format "2006-01-02T15:04:05Z07:00") }}
+
+                    {{ if gt (len $upcomingEvents) 0 }}
+
+                        {{ range first 3 $upcomingEvents }}
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    {{ range .Params.categories }}
+                                    <span class="badge card-badge mb-1">{{ . | title }}</span>
+                                    {{ end }}
+                                    <h6>
+                                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                                    </h6>
+                                </div>
+                                <div>
+                                    <div class="px-2 py-1 d-flex flex-column rounded card-badge mw-100">
+                                        <div class="px-2 fs-6 mx-auto">{{ .Params.start_date | time.Format "02" }}</div>
+                                        <div class="pb-1 px-2 fs-6 mx-auto">{{ .Params.start_date | time.Format "Jan" }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-1">
+                                <hr class="my-2">
+                            </div>
+                        </div>
+                        {{ end }}
+
+                    {{ else }}
+                        <div class="text-center">
+                            <p>{{ i18n "noUpcomingEvents" }}</p>
+                        </div>
+                    {{ end }}
+                    <div class="mt-3 bg-see-all-link">
+                        <a class="dark-blue" href="/events/">See all events <i
+                                class="bi bi-arrow-right-square-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

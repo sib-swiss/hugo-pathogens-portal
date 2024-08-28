@@ -1,0 +1,104 @@
+[404]
+other = "Entschuldigung, diese Seite konnte nicht gefunden werden."
+
+[goHome]
+other = "Zurück zur Startseite"
+
+[dashboards]
+other = "Dashboards"
+
+[seeDashboards]
+other = "Alle Dashboards anzeigen"
+
+[toc]
+other = "Inhaltsverzeichnis"
+
+[skipToContent]
+other = "Zum Hauptinhalt springen"
+
+[about]
+other = "Über uns"
+
+[data]
+other = "Daten"
+
+[connect]
+other = "Verbinden"
+
+[topics]
+other = "Themen"
+
+[topicsList]
+other = "Klicken Sie auf eines der unten stehenden Themen, um nur die Inhalte zu sehen, die zu diesem Thema gehören."
+
+[allDashboards]
+other = "Alle Dashboards"
+
+[dataDashboards]
+other = "Daten-Dashboards"
+
+[eventsAndTrainings]
+other = "Veranstaltungen & Schulungen"
+
+[eventsAndTrainingsList]
+other = "Die Titel und Startdaten der kommenden Veranstaltungen."
+
+[upcomingEvents]
+other = "Kommende Veranstaltungen"
+
+[pastEvents]
+other = "Vergangene Veranstaltungen"
+
+[startDate]
+other = "Startdatum"
+
+[endDate]
+other = "Enddatum"
+
+[location]
+other = "Ort"
+
+[organiser]
+other = "Veranstalter"
+
+[categories]
+other = "Kategorien"
+
+[description]
+other = "Beschreibung"
+
+[eventWebpage]
+other = "Veranstaltungswebseite"
+
+[dateAndTime]
+other = "Datum & Uhrzeit"
+
+[noUpcomingEvents]
+other = "Es gibt keine kommenden Veranstaltungen."
+
+[findSamplesOnNationalBiobanks]
+other = "Finden Sie Proben in nationalen Biobanken"
+
+[searchDatabase]
+other = "Datenbank durchsuchen"
+
+[newsAndHighlights]
+other = "Nachrichten & Highlights"
+
+[seeNewsAndHighlights]
+other = "Alle Nachrichten & Highlights anzeigen"
+
+[author]
+other = "Autor"
+
+[publishedDate]
+other = "Veröffentlichungsdatum"
+
+[tags]
+other = "Tags"
+
+[lastModifiedBy]
+other = "Zuletzt bearbeitet von"
+
+[editThisPage]
+other = "Diese Seite bearbeiten"

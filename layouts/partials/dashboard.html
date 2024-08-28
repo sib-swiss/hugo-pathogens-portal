@@ -1,0 +1,20 @@
+<div class="col p-2">
+    <div class="bg-dashboard">
+        <div aria-hidden="true">
+            <a href="{{ if .Page.Params.redirect_url }}{{ .Page.Params.redirect_url }}{{ else }}{{ .Page.RelPermalink }}{{ end }}">
+                <img class="img-fluid" alt="Thumbnail for {{ .Name }}" src="{{ relLangURL .Page.Params.image }}">
+            </a>
+        </div>
+        <div class="p-2 bg-dashboard-title">
+            <h6><a href="{{ if .Page.Params.redirect_url }}{{ .Page.Params.redirect_url }}{{ else }}{{ .Page.RelPermalink }}{{ end }}">{{ .Name }}</a></h6>
+        </div>
+        <div class="p-2">
+            {{ .Page.Description }}
+        </div>
+        <div class="px-2 pb-3">
+            {{ range .Page.Params.tags }}
+            <span class="topic_badge_small"><a href="/tags/{{ urlize . }}">{{ . }}</a></span>
+            {{ end }}
+        </div>
+    </div>
+</div>

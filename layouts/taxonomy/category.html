@@ -1,0 +1,24 @@
+{{ define "main" }}
+
+<!-- Content from the markdown file -->
+{{ .Content }}
+
+<!-- Dashboards -->
+<h1>{{ .Data.Term | title }}</h1>
+<h3>{{ i18n "upcomingEvents" }}</h3>
+<div class="container mt-3 mb-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range where (sort .Data.Pages ".Params.start_date" "asc") ".Params.start_date" "ge" (now.Format "2006-01-02T15:04:05Z07:00") }}
+        {{ partial "event.html" . }}
+        {{ end }}
+    </div>
+</div>
+<h3>{{ i18n "pastEvents" }}</h3>
+<div class="container mt-3 mb-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range where (sort .Data.Pages ".Params.start_date" "desc") ".Params.start_date" "lt" (now.Format "2006-01-02T15:04:05Z07:00") }}
+        {{ partial "event.html" . }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,184 @@
+<!-- MAIN CONTENT -->
+
+<!-- Top navigation bar with logo and menu beside the logo -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white pb-0">
+    <div class="container">
+        <!-- Logo -->
+        <div class="d-flex navbar-brand">
+            <a href="{{ relURL .Site.BaseURL }}">
+                <img class="mt-1 me-lg-3 portal-logo" src="/images/portal.png" alt="Pathogens Portal">
+            </a>
+
+            {{ if .Site.Params.logo }}
+            <a href="{{ .Site.Params.homepage }}">
+                <img class="px-2 py-lg-1 custom-logo" src="{{ relURL .Site.Params.logo }}" alt="Logo">
+            </a>
+            {{ end }}
+        </div>
+
+        <!-- Hamburger button, shows up only on smaller screen-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseBottom"
+                aria-controls="navbarCollapseBottom" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links beside logo, visible only on biger screen -->
+        <div class="d-flex flex-column align-items-end collapse navbar-collapse">
+
+            <!-- Top navbar list i.e. About, Contact, Language, etc -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto navbar-top">
+                    {{ range .Site.Menus.navbar_top }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+                    </li>
+                    {{ end }}
+                    {{ if hugo.IsMultilingual }}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-uppercase" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe2"></i> {{ $.Site.Language.LanguageCode }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end nav-languages">
+                            {{ range $.Site.Home.AllTranslations }}
+                            <li>
+                                <a class="dropdown-item" href="{{ .RelPermalink }}">
+                                    <i class="bi bi-{{ if eq .Language.Lang $.Site.Language.LanguageCode }}check-{{ end }}circle"></i>
+                                    <span lang="{{ .Language.LanguageName }}"> {{ .Language.LanguageName }}</span>
+                                </a>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </li>
+                    {{ end }}
+                    {{ with .Site.Params.repository }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ . }}">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!-- ENDS HERE - Top navigation bar with logo and menu beside the logo -->
+
+<!-- Expandable top navigation menu, controlled by above defined hamburger button, only visible on small screens -->
+<nav class="navbar navbar-expand-lg navbar-light pt-0 pb-1">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarCollapseBottom">
+
+            <!-- Top nav list i.e. About, Contact, Language, etc -->
+            <hr class="d-lg-none">
+
+            <!-- Main navigation menu for all pages, English site. Visible only in smaller devices -->
+            <div class="d-lg-none">
+                {{ $events := .Site.GetPage "section" "dashboards" }}
+                {{ if $events }}
+                <div class="main_menu_item pb-1">
+                    <a href="#dashboards" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="dashboards">
+                        {{ i18n "dataDashboards" }} <i class="bi bi-caret-down-fill small"></i>
+                    </a>
+                    <div class="collapse main_menu_item_sub ps-4" id="dashboards">
+                        <a class="d-block" href="{{ $events.RelPermalink }}">{{ i18n "allDashboards" }}</a>
+                        {{ range $events.RegularPages }}
+                        <a class="d-block" href="/dashboards/{{ urlize .Name }}">{{ .Name }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+
+                {{ range where .Site.Menus.main "Identifier" "ne" "dashboards" }}
+                <!-- Data Dashboards -->
+                <div class="main_menu_item pb-1">
+                    {{ $menuName := .Identifier }}
+                    {{ $menu := index $.Site.Menus $menuName }}
+                    {{ if $menu }}
+                    <a href="#{{ .Identifier }}" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="{{ .Identifier }}">
+                        {{ .Name }} <i class="bi bi-caret-down-fill small"></i>
+                    </a>
+                    <div class="collapse main_menu_item_sub ps-4" id="{{ .Identifier }}">
+                        {{ range $menu }}
+                        <a class="d-block" href="{{ .Page.RelPermalink }}">{{ .Name }}</a>
+                        {{ end }}
+                    </div>
+                    {{ else }}
+                    <a href="{{ .URL }}">
+                        {{ .Name }}
+                    </a>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                {{ if .Site.Taxonomies.tags }}
+                <div class="main_menu_item pb-1">
+                    <a href="#topics" data-bs-toggle="collapse"  role="button" aria-expanded="false" aria-controls="topics">
+                        {{ i18n "topics" }} <i class="bi bi-caret-down-fill small"></i>
+                    </a>
+                    <div class="collapse main_menu_item_sub ps-4" id="topics">
+                        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                        <a class="d-block" href="/tags/{{ urlize $name }}">{{ $name }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            <hr class="d-lg-none">
+
+        </div>
+    </div>
+</nav>
+<!-- ENDS HERE - Expandable top navigation menu, controlled by above defined hamburger button -->
+
+<!-- Main navigation menu, English version. Visibile only on bigger screens -->
+<div class="container mb-3 d-none d-lg-block">
+    <div class="row row-cols-auto">
+        {{ $events := .Site.GetPage "section" "dashboards" }}
+        {{ if $events }}
+        <div class="col-auto main_menu_item">
+            <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+               data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">{{ i18n "dataDashboards" }}</a>
+            <div class="dropdown-menu main_menu_item_sub" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item m-0" href="{{ $events.RelPermalink }}">{{ i18n "allDashboards" }}</a>
+                {{ range $events.RegularPages }}
+                <a class="dropdown-item m-0" href="/dashboards/{{ urlize .Name }}">{{ .Name }}</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+        {{ range where .Site.Menus.main "Identifier" "ne" "dashboards" }}
+        <div class="col-auto main_menu_item">
+            {{ $menuName := .Identifier }} <!-- Use . to refer to the current context -->
+            {{ $menu := index $.Site.Menus $menuName }} <!-- Use $.Site to refer to the site context -->
+            {{ if $menu }}
+            <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+               data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">{{ .Name }}</a>
+            <div class="dropdown-menu main_menu_item_sub" aria-labelledby="navbarDropdownMenuLink">
+                {{ range $menu }}
+                <a class="dropdown-item m-0" href="{{ .Page.RelPermalink }}">{{ .Name }}</a>
+                {{ end }}
+            </div>
+            {{ else }}
+            <a href="{{ .URL }}">{{ .Name }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+        {{ if .Site.Taxonomies.tags }}
+        <div class="col-auto main_menu_item">
+            <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+               data-bs-auto-close="outside" data-bs-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">{{ i18n "topics" }}</a>
+            <div class="dropdown-menu main_menu_item_sub" aria-labelledby="navbarDropdownMenuLink">
+                {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                <a class="dropdown-item m-0" href="/tags/{{ urlize $name }}">{{ $name }}</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+<!--  ENDS HERE - Main navigation menu, English version for bigger screens -->

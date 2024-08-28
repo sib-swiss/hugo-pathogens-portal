@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<!-- Content from the markdown file -->
+{{ .Content }}
+
+<!-- Dashboards -->
+<h3><i class="bi bi-three-dots-vertical"></i> {{ i18n "dataDashboards" }} ({{ len (where .Data.Pages "Section" "dashboards") }})</h3>
+<div class="container mt-3 mb-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range where .Data.Pages "Section" "dashboards" }}
+        {{ partial "dashboard.html" . }}
+        {{ end }}
+    </div>
+    <hr>
+</div>
+
+<!-- News -->
+<h3><i class="bi bi-three-dots-vertical"></i> {{ i18n "newsAndHighlights" }} ({{ len (where .Data.Pages "Section" "news") }})</h3>
+<div class="container mt-3 mb-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range where .Data.Pages "Section" "news" }}
+        {{ partial "highlight.html" . }}
+        {{ end }}
+    </div>
+    <hr>
+</div>
+{{ end }}

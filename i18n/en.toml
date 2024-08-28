@@ -1,0 +1,104 @@
+[404]
+other = "Sorry, that page cannot be found."
+
+[goHome]
+other = "Go back to the homepage"
+
+[dashboards]
+other = "Dashboards"
+
+[seeDashboards]
+other = "See all dashboards"
+
+[toc]
+other = "Table of Contents"
+
+[skipToContent]
+other = "Skip to main content"
+
+[about]
+other = "About"
+
+[data]
+other = "Data"
+
+[connect]
+other = "Connect"
+
+[topics]
+other = "Topics"
+
+[topicsList]
+other = "Click on one of the topics below to see only the content that is related to that topic."
+
+[allDashboards]
+other = "All Dashboards"
+
+[dataDashboards]
+other = "Data Dashboards"
+
+[eventsAndTrainings]
+other = "Events & Trainings"
+
+[eventsAndTrainingsList]
+other = "The titles and start dates of upcoming events."
+
+[upcomingEvents]
+other = "Upcoming Events"
+
+[pastEvents]
+other = "Past Events"
+
+[startDate]
+other = "Start Date"
+
+[endDate]
+other = "End Date"
+
+[location]
+other = "Location"
+
+[organiser]
+other = "Organiser(s)"
+
+[categories]
+other = "Categories"
+
+[description]
+other = "Description"
+
+[eventWebpage]
+other = "Event Webpage"
+
+[dateAndTime]
+other = "Date & Time"
+
+[noUpcomingEvents]
+other = "There are no upcoming events."
+
+[findSamplesOnNationalBiobanks]
+other = "Find samples on national biobanks"
+
+[searchDatabase]
+other = "Search Database"
+
+[newsAndHighlights]
+other = "News & Highlights"
+
+[seeNewsAndHighlights]
+other = "See all news & highlights"
+
+[author]
+other = "Author"
+
+[publishedDate]
+other = "Published Date"
+
+[tags]
+other = "Tags"
+
+[lastModifiedBy]
+other = "Last modified by"
+
+[editThisPage]
+other = "Edit this page"

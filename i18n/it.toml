@@ -1,0 +1,104 @@
+[404]
+other = "Spiacente, la pagina non può essere trovata."
+
+[goHome]
+other = "Torna alla homepage"
+
+[Dashboards]
+other = "Dashboard"
+
+[seeDashboards]
+other = "Vedi tutte le dashboard"
+
+[toc]
+other = "Indice"
+
+[skipToContent]
+other = "Salta al contenuto principale"
+
+[about]
+other = "Informazioni"
+
+[data]
+other = "Dati"
+
+[connect]
+other = "Connetti"
+
+[topics]
+other = "Argomenti"
+
+[topicsList]
+other = "Clicca su uno degli argomenti qui sotto per vedere solo i contenuti relativi a quell'argomento."
+
+[allDashboards]
+other = "Tutte le dashboard"
+
+[dataDashboards]
+other = "Dashboard dei dati"
+
+[eventsAndTrainings]
+other = "Eventi & Formazioni"
+
+[eventsAndTrainingsList]
+other = "I titoli e le date di inizio degli eventi in programma."
+
+[upcomingEvents]
+other = "Eventi in programma"
+
+[pastEvents]
+other = "Eventi passati"
+
+[startDate]
+other = "Data di inizio"
+
+[endDate]
+other = "Data di fine"
+
+[location]
+other = "Luogo"
+
+[organiser]
+other = "Organizzatore/i"
+
+[categories]
+other = "Categorie"
+
+[description]
+other = "Descrizione"
+
+[eventWebpage]
+other = "Pagina dell'evento"
+
+[dateAndTime]
+other = "Data & Ora"
+
+[noUpcomingEvents]
+other = "Non ci sono eventi in programma."
+
+[findSamplesOnNationalBiobanks]
+other = "Trova campioni nelle biobanche nazionali"
+
+[searchDatabase]
+other = "Cerca nel database"
+
+[newsAndHighlights]
+other = "Notizie & In evidenza"
+
+[seeNewsAndHighlights]
+other = "Vedi tutte le notizie & in evidenza"
+
+[author]
+other = "Autore"
+
+[publishedDate]
+other = "Data di pubblicazione"
+
+[tags]
+other = "Tag"
+
+[lastModifiedBy]
+other = "Ultima modifica di"
+
+[editThisPage]
+other = "Modifica questa pagina"

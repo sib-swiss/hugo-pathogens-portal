@@ -1,0 +1,25 @@
+{{ $events := .Site.GetPage "section" "dashboards" }}
+{{ if $events }}
+{{ $highlightedEvents := where $events.RegularPages "Params.highlight" true }}
+{{ if not .IsHome }}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range $events.RegularPages }}
+          {{ partial "dashboard.html" . }}
+      {{ end }}
+    </div>
+{{ else }}
+    {{ if len $highlightedEvents }}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range first 3 $highlightedEvents }}
+            {{ partial "dashboard.html" . }}
+        {{ end }}
+    </div>
+    {{ else }}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+        {{ range first 3 $events.RegularPages }}
+            {{ partial "dashboard.html" . }}
+        {{ end }}
+    </div>
+    {{ end }}
+{{ end }}
+{{ end }}

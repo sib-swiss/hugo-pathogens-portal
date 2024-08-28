@@ -1,0 +1,17 @@
+{{ define "main" }}
+
+<div class="mb-3">
+    {{ .Content }}
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2 mb-3">
+    {{ $paginatedPages := .Paginate (.Data.Pages) 9 }}
+    {{ range $paginatedPages.Pages }}
+    {{ partial "dashboard.html" . }}
+    {{ end }}
+</div>
+<div class="d-flex justify-content-end">
+    {{ template "_internal/pagination.html" . }}
+</div>
+
+{{ end }}

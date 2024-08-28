@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+<hr>
+{{ with .Params.start_date }}
+    <p><strong>{{ i18n "startDate" }}:</strong> {{ . | time.Format "02 January 2006 15:04" }}</p>
+{{ end }}
+{{ with .Params.end_date }}
+    <p><strong>{{ i18n "endDate" }}:</strong> {{ . | time.Format "02 January 2006 15:04" }}</p>
+{{ end }}
+{{ with .Params.location }}
+    <p><strong>{{ i18n "location" }}:</strong> {{ . }}</p>
+{{ end }}
+{{ with .Params.organiser }}
+    <p><strong>{{ i18n "organiser" }}:</strong> {{ . }}</p>
+{{ end }}
+
+{{ with .Params.categories }}
+    <p><strong>{{ i18n "categories" }}:</strong>
+        {{ range . }}
+        <a class="badge card-badge mb-1 text-white text-decoration-none" href="/categories/{{ . | urlize }}">{{ . | title }}</a>
+        {{ end }}
+    </p>
+{{ end }}
+{{ with .Params.description }}
+    <p class="mt-5"><strong>{{ i18n "description" }}:</strong><br> {{ . }}</p>
+{{ end }}
+
+{{ with .Params.external_url }}
+    <p class="mt-5"><a href="{{ . }}"><i class="bi bi-globe"></i> {{ i18n "eventWebpage" }}</a></p>
+{{ end }}
+
+{{ with .Content }}
+
+<section id="content" class="mt-5">
+
+    {{ . }}
+
+</section>
+
+{{ end }}
+
+{{ end }}

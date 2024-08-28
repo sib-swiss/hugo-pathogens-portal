@@ -1,0 +1,104 @@
+[404]
+other = "Je nám líto, ale tato stránka nebyla nalezena."
+
+[goHome]
+other = "Zpět na domovskou stránku"
+
+[Dashboards]
+other = "Řídicí panely"
+
+[seeDashboards]
+other = "Zobrazit všechny řídicí panely"
+
+[toc]
+other = "Obsah"
+
+[skipToContent]
+other = "Přeskočit na hlavní obsah"
+
+[about]
+other = "O nás"
+
+[data]
+other = "Data"
+
+[connect]
+other = "Připojit se"
+
+[topics]
+other = "Témata"
+
+[topicsList]
+other = "Klikněte na jedno z níže uvedených témat a zobrazí se pouze obsah související s tímto tématem."
+
+[allDashboards]
+other = "Všechny řídicí panely"
+
+[dataDashboards]
+other = "Datové řídicí panely"
+
+[eventsAndTrainings]
+other = "Události a školení"
+
+[eventsAndTrainingsList]
+other = "Názvy a počáteční data nadcházejících událostí."
+
+[upcomingEvents]
+other = "Nadcházející události"
+
+[pastEvents]
+other = "Minulé události"
+
+[startDate]
+other = "Datum zahájení"
+
+[endDate]
+other = "Datum ukončení"
+
+[location]
+other = "Místo"
+
+[organiser]
+other = "Pořadatel(é)"
+
+[categories]
+other = "Kategorie"
+
+[description]
+other = "Popis"
+
+[eventWebpage]
+other = "Webová stránka události"
+
+[dateAndTime]
+other = "Datum a čas"
+
+[noUpcomingEvents]
+other = "Nejsou žádné nadcházející události."
+
+[findSamplesOnNationalBiobanks]
+other = "Najděte vzorky v národních biobankách"
+
+[searchDatabase]
+other = "Prohledat databázi"
+
+[newsAndHighlights]
+other = "Novinky a zajímavosti"
+
+[seeNewsAndHighlights]
+other = "Zobrazit všechny novinky a zajímavosti"
+
+[author]
+other = "Autor"
+
+[publishedDate]
+other = "Datum publikace"
+
+[tags]
+other = "Tagy"
+
+[lastModifiedBy]
+other = "Naposledy upraveno"
+
+[editThisPage]
+other = "Upravit tuto stránku"

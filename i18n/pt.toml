@@ -1,0 +1,104 @@
+[404]
+other = "Desculpe, essa página não pode ser encontrada."
+
+[goHome]
+other = "Voltar para a página inicial"
+
+[Dashboards]
+other = "Painéis de Controle"
+
+[seeDashboards]
+other = "Ver todos os painéis de controle"
+
+[toc]
+other = "Índice"
+
+[skipToContent]
+other = "Pular para o conteúdo principal"
+
+[about]
+other = "Sobre"
+
+[data]
+other = "Dados"
+
+[connect]
+other = "Conectar"
+
+[topics]
+other = "Tópicos"
+
+[topicsList]
+other = "Clique em um dos tópicos abaixo para ver apenas o conteúdo relacionado a esse tópico."
+
+[allDashboards]
+other = "Todos os Painéis de Controle"
+
+[dataDashboards]
+other = "Painéis de Dados"
+
+[eventsAndTrainings]
+other = "Eventos & Treinamentos"
+
+[eventsAndTrainingsList]
+other = "Os títulos e as datas de início dos próximos eventos."
+
+[upcomingEvents]
+other = "Próximos Eventos"
+
+[pastEvents]
+other = "Eventos Passados"
+
+[startDate]
+other = "Data de Início"
+
+[endDate]
+other = "Data de Término"
+
+[location]
+other = "Localização"
+
+[organiser]
+other = "Organizador(es)"
+
+[categories]
+other = "Categorias"
+
+[description]
+other = "Descrição"
+
+[eventWebpage]
+other = "Página do Evento"
+
+[dateAndTime]
+other = "Data & Hora"
+
+[noUpcomingEvents]
+other = "Não há eventos futuros."
+
+[findSamplesOnNationalBiobanks]
+other = "Encontre amostras em biobancos nacionais"
+
+[searchDatabase]
+other = "Pesquisar na Base de Dados"
+
+[newsAndHighlights]
+other = "Notícias & Destaques"
+
+[seeNewsAndHighlights]
+other = "Ver todas as notícias & destaques"
+
+[author]
+other = "Autor"
+
+[publishedDate]
+other = "Data de Publicação"
+
+[tags]
+other = "Tags"
+
+[lastModifiedBy]
+other = "Última modificação por"
+
+[editThisPage]
+other = "Editar esta página"

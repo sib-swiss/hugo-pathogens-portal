@@ -1,0 +1,104 @@
+[404]
+other = "Извините, эта страница не найдена."
+
+[goHome]
+other = "Вернуться на главную страницу"
+
+[Dashboards]
+other = "Панели управления"
+
+[seeDashboards]
+other = "Просмотреть все панели управления"
+
+[toc]
+other = "Содержание"
+
+[skipToContent]
+other = "Перейти к основному содержанию"
+
+[about]
+other = "О нас"
+
+[data]
+other = "Данные"
+
+[connect]
+other = "Подключиться"
+
+[topics]
+other = "Темы"
+
+[topicsList]
+other = "Нажмите на одну из тем ниже, чтобы увидеть только контент, связанный с этой темой."
+
+[allDashboards]
+other = "Все панели управления"
+
+[dataDashboards]
+other = "Панели управления данными"
+
+[eventsAndTrainings]
+other = "События и тренинги"
+
+[eventsAndTrainingsList]
+other = "Названия и даты начала предстоящих событий."
+
+[upcomingEvents]
+other = "Предстоящие события"
+
+[pastEvents]
+other = "Прошедшие события"
+
+[startDate]
+other = "Дата начала"
+
+[endDate]
+other = "Дата окончания"
+
+[location]
+other = "Место проведения"
+
+[organiser]
+other = "Организатор(ы)"
+
+[categories]
+other = "Категории"
+
+[description]
+other = "Описание"
+
+[eventWebpage]
+other = "Веб-страница события"
+
+[dateAndTime]
+other = "Дата и время"
+
+[noUpcomingEvents]
+other = "Нет предстоящих событий."
+
+[findSamplesOnNationalBiobanks]
+other = "Найдите образцы в национальных биобанках"
+
+[searchDatabase]
+other = "Поиск в базе данных"
+
+[newsAndHighlights]
+other = "Новости и основные события"
+
+[seeNewsAndHighlights]
+other = "Посмотреть все новости и основные события"
+
+[author]
+other = "Автор"
+
+[publishedDate]
+other = "Дата публикации"
+
+[tags]
+other = "Теги"
+
+[lastModifiedBy]
+other = "Последнее изменение"
+
+[editThisPage]
+other = "Редактировать эту страницу"

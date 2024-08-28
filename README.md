@@ -2,7 +2,7 @@
 
 ### [Hugo](https://gohugo.io) pathogens portal theme inspired by the [Swedish Pathogens Portal](https://www.pathogens.se/)
 
-![Screenshot](https://raw.githubusercontent.com/sib-swiss/hugo-pathogens-portal/master/images/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/sib-swiss/hugo-pathogens-portal/main/images/screenshot.png)
 
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -260,7 +260,7 @@ defaultContentLanguage = "en"
     # (Optional) Enable 'Edit this page' links for 'doc' page type.
     # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
     # Path must point to the site directory.
-    # editPath = 'edit/master/exampleSite'
+    # editPath = 'edit/main/exampleSite'
     
     # (Optional) Set the logo for your institution next to the pathogens-portal logo.
     # logo = "images/logo.png"
@@ -296,7 +296,7 @@ Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/m
 
 This theme follows a simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
 
-If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `master` branch and update your website when needed.
+If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `main` branch and update your website when needed.
 
 ## Credits
 

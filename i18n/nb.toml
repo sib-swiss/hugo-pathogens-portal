@@ -1,0 +1,104 @@
+[404]
+other = "Beklager, siden kan ikke bli funnet."
+
+[goHome]
+other = "Gå tilbake til hjemmesiden"
+
+[Dashboards]
+other = "Dashbord"
+
+[seeDashboards]
+other = "Se alle dashbord"
+
+[toc]
+other = "Innholdsfortegnelse"
+
+[skipToContent]
+other = "Hopp til hovedinnhold"
+
+[about]
+other = "Om"
+
+[data]
+other = "Data"
+
+[connect]
+other = "Koble til"
+
+[topics]
+other = "Emner"
+
+[topicsList]
+other = "Klikk på ett av emnene nedenfor for å se kun innhold relatert til det emnet."
+
+[allDashboards]
+other = "Alle dashbord"
+
+[dataDashboards]
+other = "Datadashbord"
+
+[eventsAndTrainings]
+other = "Arrangementer & Opplæring"
+
+[eventsAndTrainingsList]
+other = "Titler og startdatoer for kommende arrangementer."
+
+[upcomingEvents]
+other = "Kommende arrangementer"
+
+[pastEvents]
+other = "Tidligere arrangementer"
+
+[startDate]
+other = "Startdato"
+
+[endDate]
+other = "Sluttdato"
+
+[location]
+other = "Sted"
+
+[organiser]
+other = "Arrangør(er)"
+
+[categories]
+other = "Kategorier"
+
+[description]
+other = "Beskrivelse"
+
+[eventWebpage]
+other = "Arrangementets nettside"
+
+[dateAndTime]
+other = "Dato & Tid"
+
+[noUpcomingEvents]
+other = "Det er ingen kommende arrangementer."
+
+[findSamplesOnNationalBiobanks]
+other = "Finn prøver i nasjonale biobanker"
+
+[searchDatabase]
+other = "Søk i databasen"
+
+[newsAndHighlights]
+other = "Nyheter & Høydepunkter"
+
+[seeNewsAndHighlights]
+other = "Se alle nyheter & høydepunkter"
+
+[author]
+other = "Forfatter"
+
+[publishedDate]
+other = "Publiseringsdato"
+
+[tags]
+other = "Tagger"
+
+[lastModifiedBy]
+other = "Sist endret av"
+
+[editThisPage]
+other = "Rediger denne siden"

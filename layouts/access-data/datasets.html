@@ -1,0 +1,384 @@
+{{ define "main" }}
+
+{{ .Content }}
+
+{{ with .Site.Params.country }}
+
+<h2 class="mt-5">Pathogens Portal</h2>
+<h6 class="text-muted mb-3">Results for {{ . }}</h6>
+<div class="row">
+    <div class="col-12 bg-light py-2">
+        <a target="_blank" href="https://www.pathogensportal.org/sequences?db=sequences&query=(country:%22{{ . }}%22)" class="h3 text-decoration-none">Pathogen sequences
+            <div id="pathogen-sequences-category" class="d-inline fs-6 fw-normal ms-2 mb-3">0 results</div>
+        </a>
+    </div>
+    <div class="col-12 py-2 mb-3">
+        <a target="_blank" href="https://www.pathogensportal.org/sequences?db=embl-pathogen&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="pathogen-sequences-sequences">0</span> results in Sequences
+        </a>
+        <a target="_blank" href="https://www.pathogensportal.org/sequences?db=sra-analysis&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="pathogen-sequences-analysis">0</span> results in Analysis
+        </a>
+        <a target="_blank" href="https://www.pathogensportal.org/sequences?db=sra-experiment&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="pathogen-sequences-raw-reads">0</span> results in Raw reads
+        </a>
+        <a target="_blank" href="https://www.pathogensportal.org/sequences?db=genome_assembly&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="pathogen-sequences-assembly">0</span> results in Assembly
+        </a>
+    </div>
+    <div class="col-12 bg-light py-2">
+        <a target="_blank" href="https://www.pathogensportal.org/samples?db=samples&query=(country:%22{{ . }}%22)" class="h3 text-decoration-none">Samples
+            <div id="samples-category" class="d-inline fs-6 fw-normal ms-2 mb-3">0 results</div>
+        </a>
+    </div>
+    <div class="col-12 py-2">
+        <a target="_blank" href="https://www.pathogensportal.org/samples?db=samples&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="samples">0</span> results in Samples
+        </a>
+    </div>
+    <div class="col-12 bg-light py-2">
+        <a target="_blank" href="https://www.pathogensportal.org/priority-pathogens?db=priorityPathogens&query=(country:%22{{ . }}%22)" class="h3 text-decoration-none">Outbreak
+            <div id="outbreak-category" class="d-inline fs-6 fw-normal ms-2 mb-3">0 results</div>
+        </a>
+    </div>
+    <div class="col-12 py-2 mb-3">
+        <a target="_blank" href="https://www.pathogensportal.org/priority-pathogens?db=embl-pathogen&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="outbreak-sequences">0</span> results in Sequences
+        </a>
+        <a target="_blank" href="https://www.pathogensportal.org/priority-pathogens?db=sra-analysis&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="outbreak-analysis">0</span> results in Analysis
+        </a>
+        <a target="_blank" href="https://www.pathogensportal.org/priority-pathogens?db=sra-experiment&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="outbreak-raw-reads">0</span> results in Raw reads
+        </a>
+        <a target="_blank" href="https://www.pathogensportal.org/priority-pathogens?db=sra-sample&query=(country:%22{{ . }}%22)"
+           class="bg-datasets-btn">
+            View all <span id="outbreak-samples">0</span> results in Samples
+        </a>
+    </div>
+</div>
+
+<script lang="js">
+    const baseURL = "https://www.ebi.ac.uk/ebisearch/ws/rest/";
+
+    async function fetchStats(path) {
+        const response = await fetch(`${baseURL}${path}`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        return data.hitCount;
+    }
+
+    async function fetchPathogenSequenceStats() {
+        const categories = {
+            "Sequences": "embl-pathogen/?&query=(id%3A%5B*%20TO%20*%5D)%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0",
+            "Analysis": "sra-analysis/?query=((tag%3A%22pathogen%22)%20AND%20(tag%3A(*%3A*%20NOT%20%22covid19%22)))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0",
+            "Raw reads": "sra-experiment/?&query=(tag%3Apathogen%20AND%20NOT%20tag%3Acovid19)%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0",
+            "Assembly": "genome_assembly/?query=((tag%3A%22pathogen%22)%20AND%20(tag%3A(*%3A*%20NOT%20%22covid19%22)))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0"
+        }
+
+        const promises = Object.values(categories).map(category => fetchStats(category));
+
+        const results = await Promise.all(promises);
+
+        document.getElementById("pathogen-sequences-sequences").textContent = results[0].toLocaleString();
+        document.getElementById("pathogen-sequences-analysis").textContent = results[1].toLocaleString();
+        document.getElementById("pathogen-sequences-raw-reads").textContent = results[2].toLocaleString();
+        document.getElementById("pathogen-sequences-assembly").textContent = results[3].toLocaleString();
+
+        document.getElementById("pathogen-sequences-category").textContent = `${results.reduce((acc, curr) => acc + curr, 0).toLocaleString()} results`;
+    }
+
+    async function fetchOutbreakStats() {
+        const categories = {
+            "Sequences": "embl-pathogen/?query=(tag%3A(%22pathogen%3Apriority%22))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0",
+            "Analysis": "sra-analysis/?query=(tag%3A(%22pathogen%3Apriority%22))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0",
+            "Raw reads": "sra-experiment/?&query=(tag%3A(%22pathogen%3Apriority%22))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0",
+            "Samples": "sra-sample/?query=(tag%3A(%22pathogen%3Apriority%22))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0"
+        }
+
+        const promises = Object.values(categories).map(category => fetchStats(category));
+
+        const results = await Promise.all(promises);
+
+        document.getElementById("outbreak-sequences").textContent = results[0].toLocaleString();
+        document.getElementById("outbreak-analysis").textContent = results[1].toLocaleString();
+        document.getElementById("outbreak-raw-reads").textContent = results[2].toLocaleString();
+        document.getElementById("outbreak-samples").textContent = results[3].toLocaleString();
+
+        document.getElementById("outbreak-category").textContent = `${results.reduce((acc, curr) => acc + curr, 0).toLocaleString()} results`;
+    }
+
+    async function fetchSampleStats() {
+        const categories = {
+            "Samples": "sra-sample/?&query=((tag%3A%22pathogen%22)%20AND%20(tag%3A(*%3A*%20NOT%20%22covid19%22)))%20((country%3A%22{{ . }}%22))&size=0&format=JSON&facetcount=0"
+        }
+
+        const promises = Object.values(categories).map(category => fetchStats(category));
+
+        const results = await Promise.all(promises);
+
+        document.getElementById("samples").textContent = results[0].toLocaleString();
+        document.getElementById("samples-category").textContent = `${results.reduce((acc, curr) => acc + curr, 0).toLocaleString()} results`;
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        await fetchPathogenSequenceStats();
+        await fetchSampleStats();
+        await fetchOutbreakStats();
+    });
+</script>
+{{ end }}
+
+{{ if .Site.Params.pubmed_country }}
+
+<h2 class="mt-5">Datasets available from research groups in {{ .Site.Params.pubmed_country }}</h2>
+
+<p>The table below lists the latest publications from research groups in {{ .Site.Params.pubmed_country }} that are
+    on Europe Pubmed Central and mention a dataset (cf. data sources on the left panel).</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 px-0">
+            <div class="px-3 pt-1 pb-2 bg-light">
+                <h5>Data sources</h5>
+                <div id="links">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg px-0 ms-3">
+            <div id="loader" class="text-center"></div>
+            <div class="table-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script lang="js">
+    const europePMCBaseURL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search";
+
+    const query = "(ABSTRACT:\"SARS-CoV-2\" OR ABSTRACT:\"COVID-19\" OR ABSTRACT:\"Covid-19\") AND AFF:\"{{ .Site.Params.pubmed_country }}\" AND CREATION_DATE:[<start> TO <end>]";
+
+    const apiURL = `${europePMCBaseURL}?resultType=core&format=json&pageSize=1000&query=${query}`;
+
+    wordsOfInterest = {
+        "Figshare": "figshare*",
+        "Zenodo": "zenodo*",
+        "Github": "github*",
+        "Dryad": "dryad",
+        "Gene Expression Omnibus": "gse*",
+        "Protein Data Bank": "PDB*",
+        "Proteome Xchange": "(PXD* OR ProteomeXchange)",
+        "SASBDB": "SASD*",
+        "Electron Microscopy DB": "(EMD AND NOT serono)",
+        "ENA": "(PRJE* OR PRJD* OR PRJN*)",
+        "Open Science Framework": '("Open Science Framework" OR osf*)',
+        "Experimental Factor Ontology": "EFO",
+    }
+
+    function startLoading() {
+        const loader = document.getElementById("loader");
+        loader.innerHTML = `<div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; border-width: .5em;">
+                <span class="visually-hidden">Loading...</span>
+            </div>`;
+    }
+
+    function stopLoading() {
+        const loader = document.getElementById("loader");
+        loader.innerHTML = "";
+    }
+
+    async function fetchData(url, wordsOfInterest) {
+        const combinedUrl = `${url} AND ${wordsOfInterest}`;
+
+        if ('caches' in window) {
+            const cache = await caches.open('pathogens-portal');
+            const cachedResponse = await cache.match(combinedUrl);
+
+            if (cachedResponse && cachedResponse.headers.get('timestamp') > Date.now() - 24 * 60 * 60 * 1000) {
+                const data = await cachedResponse.json();
+                return [data?.resultList?.result, data?.hitCount]
+            } else {
+                await cache.delete(combinedUrl);
+            }
+        }
+
+        const response = await fetch(combinedUrl);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if ('caches' in window) {
+            const cache = await caches.open('pathogens-portal');
+            await cache.put(combinedUrl, new Response(JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'timestamp': Date.now()
+                }
+            }));
+        }
+
+        return [data?.resultList?.result, data?.hitCount]
+    }
+
+    async function fetchAllDataConcurrently(apiURL, wordsOfInterest) {
+        const fetchPromises = Object.values(wordsOfInterest).map(word => fetchData(apiURL, word));
+
+        try {
+            const result = await Promise.all(fetchPromises);
+
+            return result;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return [];
+        }
+    }
+
+    async function renderTable(data) {
+        const table = document.createElement("table");
+
+        table.id = "datasets";
+
+        table.classList.add("table", "table-hover");
+
+        // Reset table
+        table.innerHTML = "";
+
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+
+        const headers = ["Publication"];
+
+        const headerRow = document.createElement("tr");
+
+        headers.forEach(header => {
+            const th = document.createElement("th");
+            th.textContent = header;
+            th.scope = "col";
+            if (header === "Publication") {
+                th.style.width = "65%";
+            }
+            headerRow.appendChild(th);
+        });
+
+        thead.appendChild(headerRow);
+
+        data.forEach(item => {
+            const row = document.createElement("tr");
+
+            const publication = document.createElement("td");
+
+            const title = `<div><a href="https://doi.org/${item.doi}" target="_blank"><span style="font-weight:500;">${item.title}</span></a></div>`;
+            const authors = `<div><span class="text-muted" style="font-size:0.82em">${item.authorString}</span></div>`;
+            const journal = `<div><span class="text-muted" style="font-size:0.82em">${item.journalTitle}</span></div>`;
+            const doi = `<div><span class="text-muted" style="font-size:0.82em">DOI: ${item.doi}</span></div>`;
+
+            publication.innerHTML = title + authors + journal + doi;
+
+            row.appendChild(publication);
+
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        const container = document.querySelector(".table-responsive");
+
+        container.innerHTML = "";
+
+        container.appendChild(table);
+
+        new DataTable('.table', {
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/{{ i18n "lang" }}.json'
+            }
+        })
+    }
+
+    async function activateLink(link) {
+        const links = document.getElementsByClassName("link");
+
+        for (const link of links) {
+            link.classList.remove("fw-bold", "text-decoration-none", "text-dark");
+        }
+
+        const activeLink = document.getElementById(link);
+        activeLink.classList.add("fw-bold", "text-decoration-none", "text-dark");
+    }
+
+
+    async function renderHTML() {
+        startLoading()
+
+        const result = await fetchAllDataConcurrently(apiURL, wordsOfInterest);
+
+        const data = result.map(item => item[0]).flat();
+
+        const links = document.getElementById("links");
+
+        const container = document.createElement("div");
+        container.classList.add("d-block");
+
+        const link = document.createElement("a");
+        link.textContent = `All data (${result.reduce((acc, curr) => acc + curr[1], 0)})`;
+        link.classList.add("link", "text-decoration-none", "text-dark", "fw-bold");
+        link.id = "all";
+        link.href = `#datasets`;
+        link.onclick = async () => {
+            await renderTable(data);
+            await activateLink("all");
+        }
+
+        container.appendChild(link);
+
+        links.appendChild(container);
+
+
+        for (const value of Object.keys(wordsOfInterest)) {
+            const key = Object.keys(wordsOfInterest).indexOf(value);
+            const link = document.createElement("a");
+            link.id = value.toLowerCase();
+            link.href = `#datasets`;
+            link.classList.add("link");
+            link.textContent = `${value} (${result[key][1]})`;
+            link.onclick = async () => {
+                const result = await fetchData(apiURL, wordsOfInterest[value]);
+                const data = result[0];
+                console.log("Data", data.length);
+                await renderTable(data);
+                await activateLink(value.toLowerCase());
+            }
+            links.appendChild(link);
+            links.appendChild(document.createElement("br"));
+        }
+
+        await renderTable(data);
+
+        stopLoading();
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        await renderHTML();
+    });
+</script>
+
+{{ end }}
+
+{{ end }}

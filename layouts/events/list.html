@@ -1,0 +1,129 @@
+{{ define "main" }}
+
+<div class="mb-3">
+    {{ .Content }}
+</div>
+
+{{ $events := .Site.GetPage "section" "events" }}
+
+{{ if $events }}
+<h1>Upcoming Events</h1>
+
+{{ $upcomingEvents := where (sort $events.RegularPages ".Params.start_date" "asc") ".Params.start_date" "ge" (now.Format "2006-01-02T15:04:05Z07:00") }}
+{{ if eq (len $upcomingEvents) 0 }}
+<p>No upcoming events found.</p>
+{{ else }}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+    {{ range $upcomingEvents }}
+    <div class="col-md-6 col-lg-4">
+        <div class="p-3 border rounded h-100">
+            <div class="d-flex justify-content-between">
+                <div>
+                    {{ range .Params.categories }}
+                        <a class="badge card-badge mb-1 text-white text-decoration-none" href="/categories/{{ . | urlize }}">{{ . | title }}</a>
+                    {{ end }}
+                    <h5>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h5>
+                </div>
+                <div>
+                    <div class="px-2 pb-1 m-2 d-flex flex-column rounded card-badge">
+                        <div class="px-2 fs-3 mx-auto">{{ .Params.start_date | time.Format "02" }}</div>
+                        <div class="pb-1 px-2 mx-auto">{{ .Params.start_date | time.Format "January" }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <p class="mb-0 fw-bold">Date and time:</p>{{ .Params.start_date | time.Format "02 January 2006 15:04" }} - {{ .Params.end_date | time.Format "02 January 2006 15:04" }}
+                </div>
+            </div>
+            {{ with .Params.organiser }}
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 fw-bold">Organiser(s):</p> {{ . }}
+                </div>
+            </div>
+            {{ end }}
+            {{ with .Params.location }}
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 fw-bold">Location:</p> {{ . }}
+                </div>
+            </div>
+            {{ end }}
+            {{ with .Params.external_url }}
+            <div class="row mt-3">
+                <div class="col">
+                    <a href="{{ . }}"><i class="bi bi-globe"></i> Event webpage</a>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+
+<h1 class="mt-5">Past Events</h1>
+
+{{ $pastEvents := where (sort $events.RegularPages ".Params.start_date" "desc") ".Params.start_date" "lt" (now.Format "2006-01-02T15:04:05Z07:00") }}
+{{ if eq (len $pastEvents) 0 }}
+<p>No past events found.</p>
+{{ else }}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+    {{ range $pastEvents }}
+    <div class="col-md-6 col-lg-4">
+        <div class="p-3 border rounded h-100">
+            <div class="d-flex justify-content-between">
+                <div>
+                    {{ range .Params.categories }}
+                        <a class="badge card-badge mb-1 text-white text-decoration-none" href="/categories/{{ . | urlize }}">{{ . | title }}</a>
+                    {{ end }}
+                    <h5>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h5>
+                </div>
+                <div>
+                    <div class="px-2 pb-1 m-2 d-flex flex-column rounded card-badge">
+                        <div class="px-2 fs-3 mx-auto">{{ .Params.start_date | time.Format "02" }}</div>
+                        <div class="pb-1 px-2 mx-auto">{{ .Params.start_date | time.Format "January" }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <p class="mb-0 fw-bold">Date and time:</p>{{ .Params.start_date | time.Format "02 January 2006 15:04" }} - {{ .Params.end_date | time.Format "02 January 2006 15:04" }}
+                </div>
+            </div>
+            {{ with .Params.organiser }}
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 fw-bold">Organiser(s):</p> {{ . }}
+                </div>
+            </div>
+            {{ end }}
+            {{ with .Params.location }}
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0 fw-bold">Location:</p> {{ . }}
+                </div>
+            </div>
+            {{ end }}
+            {{ with .Params.external_url }}
+            <div class="row mt-3">
+                <div class="col">
+                    <a href="{{ . }}"><i class="bi bi-globe"></i> Event webpage</a>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,104 @@
+[404]
+other = "Désolé, cette page est introuvable."
+
+[goHome]
+other = "Retourner à la page d'accueil"
+
+[dashboards]
+other = "Tableaux de bord"
+
+[seeDashboards]
+other = "Voir tous les tableaux de bord"
+
+[toc]
+other = "Table des matières"
+
+[skipToContent]
+other = "Aller au contenu principal"
+
+[about]
+other = "À propos"
+
+[data]
+other = "Données"
+
+[connect]
+other = "Connexion"
+
+[topics]
+other = "Sujets"
+
+[topicsList]
+other = "Cliquez sur l'un des sujets ci-dessous pour voir uniquement le contenu lié à ce sujet."
+
+[allDashboards]
+other = "Tous les tableaux de bord"
+
+[dataDashboards]
+other = "Tableaux de bord des données"
+
+[eventsAndTrainings]
+other = "Événements & Formations"
+
+[eventsAndTrainingsList]
+other = "Les titres et dates de début des événements à venir."
+
+[upcomingEvents]
+other = "Événements à venir"
+
+[pastEvents]
+other = "Événements passés"
+
+[startDate]
+other = "Date de début"
+
+[endDate]
+other = "Date de fin"
+
+[location]
+other = "Lieu"
+
+[organiser]
+other = "Organisateur(s)"
+
+[categories]
+other = "Catégories"
+
+[description]
+other = "Description"
+
+[eventWebpage]
+other = "Page de l'événement"
+
+[dateAndTime]
+other = "Date & Heure"
+
+[noUpcomingEvents]
+other = "Il n'y a pas d'événements à venir."
+
+[findSamplesOnNationalBiobanks]
+other = "Trouver des échantillons dans les biobanques nationales"
+
+[searchDatabase]
+other = "Rechercher dans la base de données"
+
+[newsAndHighlights]
+other = "Actualités & Points forts"
+
+[seeNewsAndHighlights]
+other = "Voir toutes les actualités & points forts"
+
+[author]
+other = "Auteur"
+
+[publishedDate]
+other = "Date de publication"
+
+[tags]
+other = "Tags"
+
+[lastModifiedBy]
+other = "Dernière modification par"
+
+[editThisPage]
+other = "Modifier cette page"

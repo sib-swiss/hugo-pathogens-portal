@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+<div style="border-radius: 5px;" class="bg-light p-5">
+<img class="img-fluid " src="{{ relLangURL .Params.image }}" alt="{{ .Title }}">
+</div>
+<div id="author" class="text-muted mt-3">
+    <small>{{ i18n "author" }}: {{ .Params.author }}</small>
+</div>
+<div id="published_date" class="text-muted">
+    <small>{{ i18n "publishedDate" }}: {{ .Date.Format "02 January 2006" }}</small>
+</div>
+<section id="content" class="mt-3">
+{{ .Content }}
+</section>
+
+<div class="row">
+    <div class="col-md">
+        {{ with .Params.tags }}
+        <span><b>{{ i18n "topics" }}:</b></span>
+        {{ range . }}
+        <span class="topic_badge_small"><a href="/tags/{{ urlize . }}">{{ . }}</a></span>
+        {{ end }}
+        {{ end }}
+    </div>
+    <div class="col-md text-md-end mt-2 mt-md-0">
+        <span><b>Share this: </b></span>
+        <a target="_blank" class="share-button" aria-label="share highlight on X"
+           href="https://twitter.com/intent/tweet?text={{ .Title }}, {{ .Permalink }}"><i class="bi bi-twitter-x me-1"></i></a>
+        <a target="_blank" class="share-button" aria-label="share highlight on linkedin"
+           href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}"><i class="bi bi-linkedin me-1"></i></a>
+        <a target="_blank" class="share-button" aria-label="share highlight on facebook"
+           href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}"><i class="bi bi-facebook me-1"></i></a>
+    </div>
+</div>
+
+{{ end }}
+
