@@ -305,11 +305,7 @@
 
         container.appendChild(table);
 
-        new DataTable('.table', {
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/{{ i18n "lang" }}.json'
-            }
-        })
+        new DataTable('.table')
     }
 
     async function activateLink(link) {
