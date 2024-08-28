@@ -26,7 +26,7 @@
 Navigate to your hugo project root and run:
 
 ```
-git submodule add - Hugo extended version, [Installation Instructions](https://gohugo.io/installation/) themes/hugo-pathogens-portal
+git submodule add https://github.com/sib-swiss/hugo-pathogens-portal themes/hugo-pathogens-portal
 ```
 
 Then run hugo (or set `theme = "hugo-pathogens-portal"`/`theme: hugo-pathogens-portal` in configuration file)
