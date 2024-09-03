@@ -28,7 +28,7 @@
 
     <!-- Custom CSS -->
     {{ $css := resources.Get "theme.css" | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
 
     <!-- Data tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.bootstrap5.min.css" integrity="sha384-3ptzuE+Rcpo/oIGgcQ40Oz3iGZ2GxGeQ/RZEyYncPivDl3lFBCI4eiS7PZAghYuS" crossorigin="anonymous">
