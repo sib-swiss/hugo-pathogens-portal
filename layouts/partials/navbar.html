@@ -10,7 +10,7 @@
             </a>
 
             {{ if .Site.Params.logo }}
-            <a href="{{ .Site.Params.homepage }}">
+            <a href="{{ .Site.Params.homepage }}" class="d-none d-lg-block">
                 <img class="px-2 py-lg-1 custom-logo" src="{{ relURL .Site.Params.logo }}" alt="Logo">
             </a>
             {{ end }}
@@ -84,7 +84,7 @@
                     <div class="collapse main_menu_item_sub ps-4" id="dashboards">
                         <a class="d-block" href="{{ $events.RelPermalink }}">{{ i18n "allDashboards" }}</a>
                         {{ range $events.RegularPages }}
-                        <a class="d-block" href="/dashboards/{{ urlize .Name }}">{{ .Name }}</a>
+                        <a class="d-block" href="{{ if .Params.redirect_url }}{{ .Params.redirect_url }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .Name }}</a>
                         {{ end }}
                     </div>
                 </div>
@@ -144,7 +144,7 @@
             <div class="dropdown-menu main_menu_item_sub" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item m-0" href="{{ $events.RelPermalink }}">{{ i18n "allDashboards" }}</a>
                 {{ range $events.RegularPages }}
-                <a class="dropdown-item m-0" href="/dashboards/{{ urlize .Name }}">{{ .Name }}</a>
+                <a class="dropdown-item m-0" href="{{ if .Params.redirect_url }}{{ .Params.redirect_url }}{{ else }}{{ .RelPermalink }}{{ end }}">{{ .Name }}</a>
                 {{ end }}
             </div>
         </div>

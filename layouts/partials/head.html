@@ -32,4 +32,9 @@
 
     <!-- Data tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.bootstrap5.min.css" integrity="sha384-3ptzuE+Rcpo/oIGgcQ40Oz3iGZ2GxGeQ/RZEyYncPivDl3lFBCI4eiS7PZAghYuS" crossorigin="anonymous">
+
+    <!-- Redirect if redirect_url is set -->
+    {{ if .Params.redirect_url }}
+    <meta http-equiv="refresh" content="0;url={{ .Params.redirect_url }}">
+    {{ end }}
 </head>
