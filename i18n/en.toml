@@ -102,3 +102,6 @@ other = "Last modified by"
 
 [editThisPage]
 other = "Edit this page"
+
+[seeAllEvents]
+other = "See all events"
